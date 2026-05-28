@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.nav-link {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1.25rem 0.75rem;
+  transition: color 0.2s;
+}
+
+.nav-link.active {
+  background-color: #f97316;
+  color: white;
+}
+
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Marquee ticker */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.marquee-text {
+  animation: marquee 20s linear infinite;
+}
+
+/* Counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.footer-bg {
+  background-color: #1a7fa0;
+}
+
+.footer-bottom {
+  background-color: #671700;
+}
+
+/* Slick slider override */
+.slick-dots li button:before {
+  color: #f97316 !important;
+  font-size: 10px !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #f97316 !important;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.hex-icon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
