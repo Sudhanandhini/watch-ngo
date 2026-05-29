@@ -1,8 +1,8 @@
-import img from '../../assets/images/09.jpg';
+import img from '../../assets/images/113.jpg';
 
 export default function StoryCoaching() {
   return (
-    <div className="max-w-3xl mx-auto py-12 px-6">
+    <div className="max-w-5xl mx-auto py-12 px-6">
       <div className="flex justify-start mb-6">
         <img src={img} alt="Special coaching program" className="w-full md:w-[480px] h-auto object-cover shadow" />
       </div>

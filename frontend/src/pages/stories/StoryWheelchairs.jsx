@@ -1,8 +1,8 @@
-import img from '../../assets/images/childerns.jpg';
+import img from '../../assets/images/114.jpg';
 
 export default function StoryWheelchairs() {
   return (
-    <div className="max-w-3xl mx-auto py-12 px-6">
+    <div className="max-w-5xl mx-auto py-12 px-6">
       <div className="flex justify-start mb-6">
         <img src={img} alt="30 free wheelchairs" className="w-full md:w-[480px] h-auto object-cover shadow" />
       </div>

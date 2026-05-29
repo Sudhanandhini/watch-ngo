@@ -1,9 +1,9 @@
 import imgLasya from '../../assets/images/lasya.jpg';
-import imgRevathi from '../../assets/images/ban3.jpg';
+import imgRevathi from '../../assets/images/revathi.jpg';
 
 export default function StoryLasya() {
   return (
-    <div className="max-w-4xl mx-auto py-12 px-6">
+    <div className="max-w-5xl mx-auto py-12 px-6">
       <h1 className="text-xl font-bold text-gray-800 text-center mb-10 leading-snug">
         The inspiring story of <em>Lasya and Revathi</em> showcases their unwavering determination and refusal to give up despite the formidable challenges they faced
       </h1>

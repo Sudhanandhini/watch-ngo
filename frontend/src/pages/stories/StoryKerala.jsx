@@ -1,8 +1,8 @@
-import img from '../../assets/images/march.jpg';
+import img from '../../assets/images/115.jpg';
 
 export default function StoryKerala() {
   return (
-    <div className="max-w-3xl mx-auto py-12 px-6">
+    <div className="max-w-5xl mx-auto py-12 px-6">
       <div className="flex justify-start mb-6">
         <img src={img} alt="Kerala Flood Relief Response" className="w-full md:w-[480px] h-auto object-cover shadow" />
       </div>

@@ -2,7 +2,7 @@ import img from '../../assets/images/ap.jpg';
 
 export default function StoryFloodRelief() {
   return (
-    <div className="max-w-3xl mx-auto py-12 px-6">
+    <div className="max-w-5xl mx-auto py-12 px-6">
       <div className="flex justify-start mb-6">
         <img src={img} alt="East and West Godavari Emergency Flood Relief" className="w-full md:w-[480px] h-auto object-cover shadow" />
       </div>
