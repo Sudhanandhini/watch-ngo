@@ -1,10 +1,13 @@
+import impact from '../assets/images/impact.jpg';
+
 export default function Impact() {
   return (
     <div>
       {/* Banner */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative
+       overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&q=80"
+          src={impact}
           alt="Impact Banner"
           className="w-full h-full object-cover"
         />
@@ -41,7 +44,7 @@ export default function Impact() {
         </p>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
           {[
             { num: '25+', label: 'Years of Service' },
             { num: '50,000+', label: 'Beneficiaries' },
@@ -53,7 +56,7 @@ export default function Impact() {
               <div className="text-xs mt-1 text-gray-200">{s.label}</div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

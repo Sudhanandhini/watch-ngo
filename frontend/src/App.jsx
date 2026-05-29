@@ -10,6 +10,9 @@ import Program from './pages/Program';
 import Contact from './pages/Contact';
 import WhatWeDo from './pages/WhatWeDo';
 import { Awards, Resources, GetInvolved, AuditReport, AnnualReport, Blog } from './pages/OtherPages';
+import PresidentDesk from './pages/PresidentDesk';
+import VisionMission from './pages/VisionMission';
+import ProgramStrategy from './pages/ProgramStrategy';
 
 function ScrollReset() {
   const { pathname } = useLocation();
@@ -27,6 +30,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/president-desk" element={<PresidentDesk />} />
+            <Route path="/vision-mission" element={<VisionMission />} />
+            <Route path="/program-strategy" element={<ProgramStrategy />} />
             <Route path="/impact" element={<Impact />} />
             <Route path="/program" element={<Program />} />
             <Route path="/what-we-do" element={<WhatWeDo />} />

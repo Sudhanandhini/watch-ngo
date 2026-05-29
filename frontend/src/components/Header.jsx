@@ -2,16 +2,15 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logo-watch.png';
 
-const WatchLogo = () => (
-  <div className="flex items-center justify-center w-20 h-20">
-    <img src={logo} alt="WATCH Logo" className="w-full h-full" />
-  </div>
-);
-
+const aboutSubmenu = [
+  { label: 'PRESIDENT DESK', path: '/president-desk' },
+  { label: 'VISION & MISSION', path: '/vision-mission' },
+  { label: 'PROGRAM STRATEGY', path: '/program-strategy' },
+];
 
 const navItems = [
   { label: 'HOME', path: '/' },
-  { label: 'ABOUT', path: '/about' },
+  { label: 'ABOUT', path: '/about', submenu: aboutSubmenu },
   { label: 'IMPACT', path: '/impact' },
   { label: 'PROGRAM', path: '/program' },
   { label: 'WHAT WE DO', path: '/what-we-do' },
@@ -74,18 +73,42 @@ export default function Header() {
           {/* Desktop nav */}
           <ul className={`${menuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row flex-wrap`}>
             {navItems.map((item) => {
-              const isActive = location.pathname === item.path;
+              const isActive = location.pathname === item.path ||
+                (item.submenu && item.submenu.some(s => s.path === location.pathname));
               return (
-                <li key={item.path}>
+                <li key={item.path} className="relative group">
                   <Link
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
-                    className={`block text-white text-sm font-semibold uppercase tracking-wide px-3 py-4 whitespace-nowrap hover:bg-secondary transition-colors duration-200 ${
+                    className={`flex items-center gap-1 text-white text-sm font-semibold uppercase tracking-wide px-3 py-4 whitespace-nowrap hover:bg-secondary transition-colors duration-200 ${
                       isActive ? 'bg-secondary' : ''
                     }`}
                   >
                     {item.label}
+                    {item.submenu && (
+                      <svg className="w-3 h-3 fill-white opacity-80" viewBox="0 0 20 20">
+                        <path d="M5 8l5 5 5-5H5z"/>
+                      </svg>
+                    )}
                   </Link>
+                  {/* Dropdown */}
+                  {item.submenu && (
+                    <ul className="absolute left-0 top-full z-50 bg-white shadow-lg min-w-[200px] hidden group-hover:block">
+                      {item.submenu.map((sub) => (
+                        <li key={sub.path}>
+                          <Link
+                            to={sub.path}
+                            onClick={() => setMenuOpen(false)}
+                            className={`block px-4 py-3 text-xs font-semibold uppercase tracking-wide border-b border-gray-100 transition-colors hover:bg-teal hover:text-white ${
+                              location.pathname === sub.path ? 'text-teal' : 'text-gray-600'
+                            }`}
+                          >
+                            {sub.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               );
             })}
