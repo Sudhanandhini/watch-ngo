@@ -30,22 +30,32 @@ export function Awards() {
   );
 }
 
-// Resources Page
-export function Resources() {
-  const gallery = Array.from({length: 12}).map((_, i) => ({
-    url: `https://images.unsplash.com/photo-${['1488521787991-ed7bbaae773c','1509099836639-18ba1795216d','1503676260728-1c00da094a0b','1609220136736-443140cffec6','1544717305-2782549b5136','1542810634-71277d95dcbb','1524503033411-c9566986fc8f','1602526429747-ac387a91d43b','1529156069898-49953e39b3ac','1488521787991-ed7bbaae773c','1509099836639-18ba1795216d','1503676260728-1c00da094a0b'][i % 12]}?w=300&q=80`,
-    alt: `Gallery Image ${i+1}`
-  }));
+// Resources / Gallery Page
+import g1 from '../assets/images/02.jpg';
+import g2 from '../assets/images/03.jpg';
+import g3 from '../assets/images/04.jpg';
+import g4 from '../assets/images/05.jpg';
+import g5 from '../assets/images/06.jpg';
+import g6 from '../assets/images/07.jpg';
+import g7 from '../assets/images/08.jpg';
+import g8 from '../assets/images/09.jpg';
+import g9 from '../assets/images/ap.jpg';
+import g10 from '../assets/images/march.jpg';
+import g11 from '../assets/images/childerns.jpg';
+import g12 from '../assets/images/our-mission.jpg';
 
+const galleryImgs = [g1,g2,g3,g4,g5,g6,g7,g8,g9,g10,g11,g12];
+
+export function Resources() {
   return (
     <div className="max-w-7xl mx-auto py-12 px-4">
       <div className="text-center mb-8">
-        <span className="inline-block bg-orange-500 text-white text-md font-bold uppercase tracking-widest px-8 py-2">GALLERY</span>
+        <span className="bg-secondary text-white text-sm font-bold uppercase tracking-widest px-10 py-2.5 rounded-full shadow">GALLERY</span>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        {gallery.map((img, i) => (
+        {galleryImgs.map((img, i) => (
           <div key={i} className="overflow-hidden aspect-square cursor-pointer group">
-            <img src={img.url} alt={img.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+            <img src={img} alt={`Gallery ${i+1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
           </div>
         ))}
       </div>
@@ -53,32 +63,71 @@ export function Resources() {
   );
 }
 
-// GetInvolved Page
+// GetInvolved / Donate Now Page
 export function GetInvolved() {
   return (
-    <div className="max-w-5xl mx-auto py-12 px-4">
-      <div className="text-center mb-10">
-        <span className="inline-block bg-orange-500 text-white text-md font-bold uppercase tracking-widest px-8 py-2">GET INVOLVED</span>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        {[
-          { title: 'VOLUNTEER', icon: '👥', desc: 'Join our team of dedicated volunteers. Your time and skills can transform lives in vulnerable communities across Andhra Pradesh.' },
-          { title: 'DONATE NOW', icon: '💝', desc: 'Your generous donation directly supports our programs for child protection, education, health and women empowerment.' },
-          { title: 'SPONSOR A CHILD', icon: '🧒', desc: 'Sponsor a child\'s education, nutrition and health care. Help break the cycle of poverty and give a child a brighter future.' },
-        ].map(item => (
-          <div key={item.title} className="bg-primary text-white p-6 text-center hover:bg-primary-dark transition-colors">
-            <div className="text-5xl mb-3">{item.icon}</div>
-            <h3 className="text-base font-bold mb-2">{item.title}</h3>
-            <p className="text-xs text-gray-200 leading-relaxed">{item.desc}</p>
-            <button className="mt-4 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold uppercase px-6 py-2 transition-colors">
-              {item.title === 'DONATE NOW' ? 'DONATE NOW' : 'JOIN US'}
-            </button>
+    <div className="max-w-5xl mx-auto py-12 px-6">
+      {/* Title */}
+      <h1 className="text-2xl font-bold text-gray-800 text-center mb-5">DONATE NOW</h1>
+
+      {/* Intro */}
+      <p className="text-sm text-gray-600 leading-relaxed text-center italic mb-4">
+        WATCH is involved in ensuring rights of the women and child, particularly from the vulnerable section of the community. We are implementing various activities that help address education and health issues and facilitate access to mainstream services (schools and community health centers) and also promote community action and stakeholders involvement to ensure accountability.
+      </p>
+      <p className="text-sm text-gray-600 text-center italic mb-10">
+        Be part of the societal transformation! We invite you to graciously donate to our organization and help fund various projects and activities.
+      </p>
+
+      {/* Two column layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* Left — Sponsor */}
+        <div>
+          <h2 className="text-base font-bold text-gray-800 text-center mb-4">Sponsor a child/ activity at Karunya Children's Home</h2>
+          <p className="text-sm text-gray-600 leading-relaxed text-justify mb-3">
+            The cost for one child to be housed and educated in Karunya is Rs.5000 per month. This cover teachers'-cum-caretakers' salaries, stationery, and books. It also covers boarding and lodging including 3 healthy meals a day for a child. You could also make a one-time financial donation.
+          </p>
+          <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
+            <li>A nutritious mid-day meal for the day for the 50+ children: Rs.2500</li>
+            <li>Clothes, stationery, books and study materials for the 50+ children: Rs.2000 per child</li>
+          </ul>
+        </div>
+
+        {/* Right — How to Donate */}
+        <div>
+          <h2 className="text-base font-bold text-gray-800 text-center mb-4">How to Donate</h2>
+          <p className="text-sm text-gray-600 mb-2">Donation through cheque/DD:<br />The cheque/DD to be drawn in favor of "WATCH" payable at Bangarupalayam and sent to our office address.</p>
+          <p className="text-sm text-gray-600 mb-3">Online Wire transfer: Transfer your donation amount to the following WATCH's bank account directly.</p>
+
+          <div className="text-sm text-gray-700 space-y-1 mb-4">
+            <p className="font-bold underline text-secondary">WATCH FOREIGN FUNDS:</p>
+            <p>A/c name: <span className="text-secondary">WATCH</span></p>
+            <p>Bank: Canara Bank</p>
+            <p>Savings Bank A/c No: 0852101018543</p>
+            <p>IFSC Code: CNRB0000852</p>
+            <p>SWIFT Code: CNRBINBBHFD</p>
+            <p>Branch: Canara Bank, Dorai Swamy Iyengar Street,<br />Chittoor-517001, Andhra Pradesh, India.</p>
           </div>
-        ))}
-      </div>
-      <div className="bg-gray-50 p-6">
-        <h3 className="text-base font-bold text-primary mb-3">Contact to Volunteer</h3>
-        <p className="text-md text-gray-600">Email: watchindiajc@gmail.com | Mobile: +91 94402 77631</p>
+
+          <div className="text-sm text-gray-700 space-y-1 mb-4">
+            <p className="font-bold underline text-secondary">WATCH LOCAL FUNDS:</p>
+            <p>A/c name: <span className="text-secondary">WATCH LOCAL FUNDS</span></p>
+            <p>Bank: Canara Bank</p>
+            <p>Savings Bank A/c No: 0852101036064</p>
+            <p>IFSC Code: CNRB0000852</p>
+            <p>SWIFT Code: CNRBINBBHFD</p>
+            <p>Branch: Canara Bank, Dorai Swamy Iyengar Street,<br />Chittoor-517001, Andhra Pradesh, India.</p>
+          </div>
+
+          <p className="text-sm text-gray-600 mb-3">WATCH is 12A and 80G registered which grants income tax exemption to both donors and WATCH. Our Organisation is also FCRA registered which enables us to accept foreign currency donation.</p>
+          <p className="text-sm text-gray-600 italic mb-3">If you would like to talk to us, do send us a mail. We hope to hear from or see you in the near future!</p>
+          <div className="text-sm text-gray-600 space-y-0.5">
+            <p>Women's Association for Liberation, Transformation and Community Health (WATCH)</p>
+            <p>No: 1-52, B.C. Colony, Bangarupalayam,</p>
+            <p>Chittoor District - 517 416, Andhra Pradesh, India.</p>
+            <p>Mobile: +91 94402 77631</p>
+            <p>E-mail: <a href="mailto:watch_india2003@yahoo.co.in" className="text-secondary hover:underline">watch_india2003@yahoo.co.in</a></p>
+          </div>
+        </div>
       </div>
     </div>
   );

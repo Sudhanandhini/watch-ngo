@@ -8,15 +8,32 @@ const aboutSubmenu = [
   { label: 'PROGRAM STRATEGY', path: '/program-strategy' },
 ];
 
+const programSubmenu = [
+  { label: 'CHILD RIGHTS & PROTECTION', path: '/child-rights-protection' },
+  { label: 'EDUCATION', path: '/education' },
+  { label: 'WOMEN & CHILD HEALTH', path: '/women-child-health' },
+  { label: 'WOMEN EMPOWERMENT', path: '/women-empowerment' },
+  { label: 'KARUNYA CHILDRENS HOME', path: '/karunya-childrens-home' },
+  { label: 'OTHER INITIATIVES', path: '/other-initiatives' },
+];
+
+const whatWeDoSubmenu = [
+  { label: 'OUR FOCUS AREA', path: '/our-focus-area' },
+  { label: "WHAT'S UNIQUE", path: '/whats-unique' },
+];
+
 const navItems = [
   { label: 'HOME', path: '/' },
   { label: 'ABOUT', path: '/about', submenu: aboutSubmenu },
   { label: 'IMPACT', path: '/impact' },
-  { label: 'PROGRAM', path: '/program' },
-  { label: 'WHAT WE DO', path: '/what-we-do' },
+  { label: 'PROGRAM', path: '/program', submenu: programSubmenu },
+  { label: 'WHAT WE DO', path: '/our-focus-area', submenu: whatWeDoSubmenu },
   { label: 'AWARDS', path: '/awards' },
-  { label: 'RESOURCES', path: '/resources' },
-  { label: 'GET INVOLVED', path: '/get-involved' },
+  { label: 'RESOURCES', path: '/resources', submenu: [
+    { label: 'GALLERY', path: '/resources' },
+    { label: 'SUCCESS STORIES', path: '/success-stories' },
+  ]},
+  { label: 'GET INVOLVED', path: '/get-involved', submenu: [{ label: 'DONORS', path: '/donors' }] },
   { label: 'CONTACT', path: '/contact' },
   { label: 'AUDIT REPORT', path: '/audit-report' },
   { label: 'ANNUAL REPORT', path: '/annual-report' },
@@ -80,7 +97,7 @@ export default function Header() {
                   <Link
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
-                    className={`flex items-center gap-1 text-white text-sm font-semibold uppercase tracking-wide px-3 py-4 whitespace-nowrap hover:bg-secondary transition-colors duration-200 ${
+                    className={`flex items-center  text-white text-sm font-semibold uppercase tracking-wide px-3 py-4 whitespace-nowrap hover:bg-secondary transition-colors duration-200 ${
                       isActive ? 'bg-secondary' : ''
                     }`}
                   >
