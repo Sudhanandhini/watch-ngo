@@ -134,14 +134,31 @@ export function GetInvolved() {
 }
 
 // AuditReport Page
+
+import audit2024 from '../assets/pdf/audit-24-25.pdf';
+import audit2023 from '../assets/pdf/audit-23-24.pdf';
+import audit2022 from '../assets/pdf/Audit-2022-2023.pdf';
+
 export function AuditReport() {
   const reports = [
-    { year: '2022-23', status: 'Available' },
-    { year: '2021-22', status: 'Available' },
-    { year: '2020-21', status: 'Available' },
-    { year: '2019-20', status: 'Available' },
-    { year: '2018-19', status: 'Available' },
+    { year: '2024-25', status: 'Available', pdf: audit2024 },
+    { year: '2023-24', status: 'Available', pdf: audit2023 },
+    { year: '2022-23', status: 'Available', pdf: audit2022 },
+  
   ];
+
+  const handleView = (pdfUrl) => {
+    window.open(pdfUrl, '_blank');
+  };
+
+  const handleDownload = (pdfUrl, fileName) => {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-4">
@@ -155,12 +172,27 @@ export function AuditReport() {
               <span className="text-md font-bold text-gray-800">Audit Report {r.year}</span>
               <span className="ml-3 text-xs text-green-600 font-medium">{r.status}</span>
             </div>
-            <button className="bg-primary text-white text-xs font-bold px-4 py-2 hover:bg-primary-dark transition-colors flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-              </svg>
-              DOWNLOAD
-            </button>
+            <div className="flex gap-2">
+              <button 
+                onClick={() => handleView(r.pdf)}
+                className="bg-secondary text-white text-xs font-bold px-4 py-2 hover:bg-teal transition-colors flex items-center gap-2 rounded"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                VIEW
+              </button>
+              <button 
+                onClick={() => handleDownload(r.pdf, `Audit-Report-${r.year}.pdf`)}
+                className="bg-primary text-white text-xs font-bold px-4 py-2 hover:bg-primary-dark transition-colors flex items-center gap-2 rounded"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                DOWNLOAD
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -169,20 +201,38 @@ export function AuditReport() {
 }
 
 // AnnualReport Page
+
+import pdf2024 from '../assets/pdf/annual-report-24-25.pdf';  
+import pdf2023 from '../assets/pdf/annual-report-23-24.pdf'; 
+import pdf2022 from '../assets/pdf/annual-report-22-23.pdf'; 
+
 export function AnnualReport() {
   const reports = [
-    { year: '2022-23', pages: '48 pages' },
-    { year: '2021-22', pages: '42 pages' },
-    { year: '2020-21', pages: '36 pages' },
-    { year: '2019-20', pages: '40 pages' },
+    { year: '2024-25', pages: '48 pages', status: 'Available' , pdf: pdf2024 },
+    { year: '2023-24', pages: '42 pages', status: 'Available' ,pdf: pdf2023},
+    { year: '2022-23', pages: '36 pages', status: 'Available', pdf: pdf2022 },
+    
   ];
+
+  const handleView = (pdfUrl) => {
+    window.open(pdfUrl, '_blank');
+  };
+
+  const handleDownload = (pdfUrl, fileName) => {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-4">
       <div className="text-center mb-8">
         <span className="inline-block bg-orange-500 text-white text-md font-bold uppercase tracking-widest px-8 py-2">ANNUAL REPORTS</span>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
         {reports.map(r => (
           <div key={r.year} className="bg-gray-50 border border-gray-200 p-6 flex items-center gap-4">
             <div className="bg-primary text-white p-4 flex-shrink-0">
@@ -192,11 +242,29 @@ export function AnnualReport() {
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-gray-800 text-md">Annual Report {r.year}</h3>
-              <p className="text-xs text-gray-500 mt-0.5">{r.pages}</p>
+              <p className="text-xs text-gray-500 mt-0.5">{r.status}</p>
             </div>
-            <button className="bg-orange-500 text-white text-xs font-bold px-4 py-2 hover:bg-orange-600 transition-colors">
-              DOWNLOAD
-            </button>
+            <div className="flex gap-2">
+              <button 
+                onClick={() => handleView(r.pdf)}
+                className="bg-secondary text-white text-xs font-bold px-3 py-2 hover:bg-teal transition-colors flex items-center gap-1 rounded"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                VIEW
+              </button>
+              <button 
+                onClick={() => handleDownload(r.pdf, `Annual-Report-${r.year}.pdf`)}
+                className="bg-[#671700] text-white text-xs font-bold px-3 py-2 hover:bg-orange-600 transition-colors flex items-center gap-1 rounded"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                DOWNLOAD
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -205,12 +273,18 @@ export function AnnualReport() {
 }
 
 // Blog Page
+
+import img1 from '../assets/images/lasya.jpg';
+import img2 from '../assets/images/ap.jpg';
+import img3 from '../assets/images/117.jpg';
+import img4 from '../assets/images/63.jpg';
+
 export function Blog() {
   const posts = [
-    { title: 'Protecting Children in Rural Communities', date: 'March 15, 2024', excerpt: 'Our ongoing work in Bangarupalayam and surrounding villages has helped hundreds of children get access to safe spaces and education...', img: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80' },
-    { title: 'Women Empowerment Through Self Help Groups', date: 'February 20, 2024', excerpt: 'WATCH has been instrumental in forming and nurturing Self Help Groups across Chittoor district, transforming the lives of thousands of women...', img: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&q=80' },
-    { title: 'Flood Relief Efforts in East Godavari', date: 'January 10, 2024', excerpt: 'When floods devastated parts of Andhra Pradesh, WATCH mobilized quickly to provide emergency relief to affected families...', img: 'https://images.unsplash.com/photo-1524503033411-c9566986fc8f?w=400&q=80' },
-    { title: 'Breaking the Cycle: Education for All', date: 'December 5, 2023', excerpt: 'Through our school support programme, we have helped hundreds of children stay in school and achieve academic success despite adversities...', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80' },
+    { title: 'The inspiring story of Lasya and Revathi showcases their unwavering determination and refusal to give up despite the formidable challenges they faced', date: 'March 15, 2024', excerpt: 'Lasya, a 14-year-old from Tambuganipalli, faced immense hardship despite being the top student in her 9th-grade class at Government High School. As a Dalit....', img: img1 },
+    { title: 'East and West Godavari Emergency Flood Relief 2019', date: 'February 20, 2024', excerpt: 'In 2019, Andhra Pradesh experienced some of its worst floods, severely affecting the East and West Godavari districts....', img: img2 },
+    { title: 'WATCH organized a Special coaching program for the youth that focused on English language skills and gender equality', date: 'January 10, 2024', excerpt: 'WATCH organized a Special coaching program for the youth that focused on English language skills and gender equality. The program focused on improving the quality of life for the underserved....', img: img3 },
+    { title: '30 free wheelchairs were distributed to Differently Abled Dalit and Tribal poor children and Adults', date: 'December 5, 2023', excerpt: 'Under the leadership of Indian Christian Ministries, the charitable organization WATCH orchestrated a heartwarming initiative to distribute 30 free wheelchairs to Differently Abled Dalit and Tribal poor children and Adults in Bangarupalayam, Palamaner and Chittoor rural mandals of Chittoor District of Andhra Pradesh....', img: img4 },
   ];
 
   return (
@@ -221,7 +295,7 @@ export function Blog() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {posts.map(post => (
           <div key={post.title} className="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <img src={post.img} alt={post.title} className="w-full h-48 object-cover"/>
+            <img src={post.img} alt={post.title} className="w-full h-60 object-contain"/>
             <div className="p-5">
               <p className="text-xs text-orange-500 font-medium mb-1">{post.date}</p>
               <h3 className="text-base font-bold text-gray-800 mb-2">{post.title}</h3>

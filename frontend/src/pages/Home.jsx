@@ -267,9 +267,9 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-3 gap-3 flex-1">
                   {[
-                    { img: 'https://images.unsplash.com/photo-1524503033411-c9566986fc8f?w=400&q=80', cap: 'East and West Godavari Emergency Flood Relief 2019' },
-                    { img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80', cap: 'WATCH organized a Special coaching program focused on English language skills and gender equality' },
-                    { img: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=80', cap: '30 free Vocational Training for Different communities' },
+                    { img: img1, cap: 'East and West Godavari Emergency Flood Relief 2019' },
+                    { img: img2, cap: 'WATCH organized a Special coaching program focused on English language skills and gender equality' },
+                    { img: img3, cap: '30 free Vocational Training for Different communities' },
                   ].map((s, i) => (
                     <div key={i} className="cursor-pointer group overflow-hidden rounded-lg">
                       <img src={s.img} alt={s.cap} className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg" />
